@@ -10,7 +10,7 @@ const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 let musicPlaying = false;
 
-// Mini-jeu 1 : collecte de cœurs
+// Mini-jeu : collecte de cœurs
 const gameArea = document.getElementById("gameArea");
 const startGameBtn = document.getElementById("startGame");
 const scoreSpan = document.getElementById("score");
@@ -21,64 +21,6 @@ let timerInterval = null;
 let score = 0;
 let timeLeft = 15;
 let gameRunning = false;
-
-// Mini-jeu 2 : quiz d'amour
-const quizQuestionEl = document.getElementById("quizQuestion");
-const quizOptionsEl = document.getElementById("quizOptions");
-const quizProgressEl = document.getElementById("quizProgress");
-const quizMessageEl = document.getElementById("quizMessage");
-const nextQuestionBtn = document.getElementById("nextQuestion");
-
-const quizData = [
-  {
-    question: "Quand tu penses à nous deux, quel mot te vient le plus en tête ?",
-    options: [
-      "Magique ✨",
-      "Confidence 🤍",
-      "Fou rire 😂",
-      "Destin 💫"
-    ],
-    reactions: [
-      "Oui, magique… comme chaque moment avec toi. ✨",
-      "La confiance qu’on a, c’est mon trésor. 🤍",
-      "Nos fous rires sont mes médicaments préférés. 😂",
-      "Je crois aussi que c’est le destin qui nous a mis ensemble. 💫"
-    ]
-  },
-  {
-    question: "Quel est ton moment préféré avec moi ?",
-    options: [
-      "Quand on parle pendant des heures 💬",
-      "Quand on se regarde en silence 👀",
-      "Quand on rigole pour rien 😆",
-      "Juste quand tu es près de moi ❤️"
-    ],
-    reactions: [
-      "Nos longues discussions… je ne les échangerais pour rien au monde. 💬",
-      "Nos silences veulent souvent dire plus que mille mots. 👀",
-      "On est vraiment deux enfants parfois, et j’adore ça. 😆",
-      "Être près de toi, c’est déjà tout ce dont j’ai besoin. ❤️"
-    ]
-  },
-  {
-    question: "Si je pouvais t’offrir quelque chose maintenant, tu choisirais…",
-    options: [
-      "Un câlin infini 🤗",
-      "Un voyage à deux 🌍",
-      "Une nuit à regarder les étoiles 🌙",
-      "Une lettre remplie de mots d’amour 💌"
-    ],
-    reactions: [
-      "Un câlin infini, c’est aussi tout ce que je veux. 🤗",
-      "Un voyage à deux… peu importe où, tant que c’est avec toi. 🌍",
-      "Regarder les étoiles avec toi serait parfait. 🌙",
-      "J’ai déjà envie de t’écrire mille lettres d’amour. 💌"
-    ]
-  }
-];
-
-let currentQuizIndex = 0;
-let selectedOptionIndex = null;
 
 // Boîte à vœux
 const wishInput = document.getElementById("wishInput");
@@ -170,7 +112,7 @@ if (musicToggle) {
   });
 }
 
-// Mini-jeu
+// Mini-jeu : collecte de cœurs
 function spawnHeart() {
   if (!gameRunning) return;
 
@@ -258,70 +200,6 @@ function endGame() {
 
 if (startGameBtn) {
   startGameBtn.addEventListener("click", startGame);
-}
-
-// Mini-jeu 2 : quiz d'amour
-function renderQuizQuestion() {
-  if (!quizQuestionEl || !quizOptionsEl || !quizProgressEl) return;
-
-  const current = quizData[currentQuizIndex];
-  quizQuestionEl.textContent = current.question;
-
-  quizOptionsEl.innerHTML = "";
-  selectedOptionIndex = null;
-  quizMessageEl.textContent = "";
-  if (nextQuestionBtn) {
-    nextQuestionBtn.disabled = true;
-    nextQuestionBtn.textContent =
-      currentQuizIndex === quizData.length - 1 ? "Voir le petit mot final" : "Question suivante";
-  }
-
-  current.options.forEach((opt, index) => {
-    const btn = document.createElement("button");
-    btn.className = "quiz-option-btn";
-    btn.textContent = opt;
-    btn.addEventListener("click", () => {
-      // mettre à jour la sélection
-      const all = quizOptionsEl.querySelectorAll(".quiz-option-btn");
-      all.forEach((b) => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      selectedOptionIndex = index;
-
-      const reaction = current.reactions[index];
-      quizMessageEl.textContent = reaction;
-
-      if (nextQuestionBtn) {
-        nextQuestionBtn.disabled = false;
-      }
-    });
-    quizOptionsEl.appendChild(btn);
-  });
-
-  quizProgressEl.textContent = `Question ${currentQuizIndex + 1} sur ${quizData.length}`;
-}
-
-function goToNextQuestion() {
-  if (selectedOptionIndex === null) return;
-
-  if (currentQuizIndex < quizData.length - 1) {
-    currentQuizIndex++;
-    renderQuizQuestion();
-  } else {
-    // fin du quiz
-    quizQuestionEl.textContent = "Merci d’avoir joué à mon petit quiz d’amour. 💖";
-    quizOptionsEl.innerHTML = "";
-    quizProgressEl.textContent = "";
-    quizMessageEl.textContent =
-      "Peu importe tes réponses, la seule vraie réponse, c’est que je t’aime plus que tout. ❤️";
-    if (nextQuestionBtn) {
-      nextQuestionBtn.disabled = true;
-      nextQuestionBtn.textContent = "C’est fini ♥";
-    }
-  }
-}
-
-if (nextQuestionBtn) {
-  nextQuestionBtn.addEventListener("click", goToNextQuestion);
 }
 
 // Boîte à vœux
