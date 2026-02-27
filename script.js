@@ -222,6 +222,30 @@ function endGame() {
   }
 
   gameMessage.textContent = message;
+
+   // Petit effet de célébration à la fin du jeu
+   if (typeof confetti === "function") {
+     const baseOptions = {
+       spread: 90,
+       origin: { y: 0.7 }
+     };
+
+     // Premier burst
+     confetti({
+       ...baseOptions,
+       particleCount: 80,
+       colors: ["#ff9a9e", "#fecfef", "#f6e7ff"]
+     });
+
+     // Second burst légèrement décalé
+     setTimeout(() => {
+       confetti({
+         ...baseOptions,
+         particleCount: 60,
+         colors: ["#ff6a88", "#ffc371", "#ffffff"]
+       });
+     }, 300);
+   }
 }
 
 if (startGameBtn) {
