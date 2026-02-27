@@ -30,10 +30,13 @@ const wishDisplay = document.getElementById("wishDisplay");
 // Message d'amour avec effet d'écriture
 const typedTextElement = document.getElementById("typedText");
 const textToType = `
-Je t’aime plus que tout, Aren. 💖
-Merci d’être dans ma vie, de me faire rire, de me comprendre, et de rendre chaque jour plus doux.
-Joyeux anniversaire à la plus belle personne de mon univers. ❤️
-Pour toujours : Kikou. 💫
+
+Joyeux anniversaire mon amour 💖🎂 Aujourd’hui 
+est un jour particulier qui me donne envie de te rappeler combien tu comptes pour moi. 
+Depuis que tu es entré dans ma vie, chaque jour est un conte de fées, une source de bonheur et de joie. 
+Ton sourire illumine mes journées et ton amour réchauffe mon cœur ❤️. 
+Je suis tellement reconnaissante de t’avoir à mes côtés. J’espère que ta journée d’anniversaire se passera à merveille.
+Que cette année t’apporte autant de bonheur que tu m’en donnes chaque jour. Je t’aime plus que tout 💕.
 `;
 let typingIndex = 0;
 const typingSpeed = 40; // ms par lettre
