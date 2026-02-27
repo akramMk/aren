@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Joyeux anniversaire Aren 🎂❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Particules de fond (cœurs & étoiles) -->
+  <div class="background-particles"></div>
+
+  <div class="page-wrapper">
+    <!-- ACCUEIL -->
+    <section class="section" id="section-accueil">
+      <h1>💖 Joyeux anniversaire Aren 💖</h1>
+      <p class="subtitle">
+        « Joyeux anniversaire ma chérie. Clique sur le cœur pour découvrir ta surprise… »
+      </p>
+
+      <div class="heart-wrapper">
+        <button id="heartButton" class="heart-button" aria-label="Découvrir la surprise">
+          ❤️
+        </button>
+      </div>
+
+      <p class="date">
+        Née le <strong>28/02/2003</strong> – De <strong>Kikou</strong> pour <strong>Aren</strong> 💘
+      </p>
+    </section>
+
+    <!-- CONTENU DÉVOILÉ APRÈS LE CLIC -->
+    <section class="section hidden" id="section-surprise">
+      <!-- Animation romantique -->
+      <div class="romantic-animation">
+        <div class="names">
+          <span class="name left">Kikou</span>
+          <span class="and">&amp;</span>
+          <span class="name right">Aren</span>
+        </div>
+        <p class="animation-text">
+          Nos cœurs se rejoignent pour toujours. 💞
+        </p>
+        <div class="floating-hearts-container"></div>
+      </div>
+
+      <!-- GALERIE DE PHOTOS -->
+      <div class="gallery-section">
+        <h2>📸 Nos plus beaux souvenirs</h2>
+        <p class="gallery-intro">
+          Chaque photo est un moment avec toi que je garde précieusement dans mon cœur.
+        </p>
+
+        <div class="photo-gallery">
+          <!-- Tes vraies photos dans le dossier public/ -->
+          <figure class="photo-card">
+            <img src="public/aren et kikou.jpg" alt="Aren et Kikou ensemble" />
+            <figcaption>Toi et moi, le cœur plein d’amour 💕</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/aren et kikouu.jpg" alt="Aren et Kikou - version 2" />
+            <figcaption>Encore nous deux… je ne m’en lasse jamais ✨</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/solo aren.jpg" alt="Aren toute seule" />
+            <figcaption>La plus belle, même quand tu es toute seule 😍</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/red photo.jpg" alt="Photo en rouge" />
+            <figcaption>Ton regard qui fait fondre tout mon monde ❤️</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/quadrer vert.jpg" alt="Photo en vert" />
+            <figcaption>Chaque couleur te va, mais le vert te rend magique 💚</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/8cb98e42-1e3f-43b1-bd23-ebcdae237b63.jpg" alt="Souvenir 1" />
+            <figcaption>Un moment spontané, mais gravé dans mon cœur 🌟</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/9d9c1e51-b7e3-4f14-8b4d-35f5423a87fd.jpg" alt="Souvenir 2" />
+            <figcaption>Ton sourire qui éclaire même les journées sombres ☀️</figcaption>
+          </figure>
+
+          <figure class="photo-card">
+            <img src="public/8ef3ee05-14ca-467d-800c-e0af5ddcce02.jpg" alt="Souvenir 3" />
+            <figcaption>Encore un souvenir de plus dans notre album d’amour 💫</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- MESSAGE D'AMOUR AVEC EFFET D'ÉCRITURE -->
+      <div class="love-message-section">
+        <h2>💌 Un message pour toi</h2>
+        <p id="typedText" class="typed-text"></p>
+        <span class="typing-cursor">|</span>
+      </div>
+
+      <!-- MUSIQUE D'AMBIANCE -->
+      <div class="music-section">
+        <h2>🎵 Notre petite musique</h2>
+        <p>Appuie sur le bouton pour lancer la musique douce que j’ai choisie pour toi.</p>
+        <!-- Mets ton fichier musique dans le dossier audio/ et change le src -->
+        <audio id="bgMusic" loop>
+          <source src="audio/musique-anniversaire.mp3" type="audio/mpeg" />
+          Ton navigateur ne supporte pas l’audio.
+        </audio>
+        <button id="musicToggle" class="btn-secondary">
+          Lancer la musique
+        </button>
+      </div>
+
+      <!-- MINI-JEU : COLLECTE DE CŒURS -->
+      <div class="game-section">
+        <h2>🎯 Petit jeu d’amour</h2>
+        <p>
+          Attrape un maximum de cœurs avec ta souris (ou ton doigt sur mobile) avant la fin du temps !  
+          Chaque cœur que tu attrapes est un "je t’aime" de plus. 💗
+        </p>
+        <div class="game-info">
+          <span>Score : <span id="score">0</span></span>
+          <span>Temps : <span id="time">15</span>s</span>
+        </div>
+        <div id="gameArea" class="game-area"></div>
+        <button id="startGame" class="btn-primary">Lancer le jeu</button>
+        <p id="gameMessage" class="game-message"></p>
+      </div>
+
+      <!-- DEUXIÈME JEU : QUIZ D'AMOUR -->
+      <div class="love-quiz-section">
+        <h2>💘 Quiz d’amour pour toi</h2>
+        <p class="love-quiz-intro">
+          Réponds à quelques petites questions sur nous.  
+          Il n’y a pas de mauvaise réponse, je veux juste voir comment tu me vois. 💞
+        </p>
+
+        <div id="quizContainer" class="quiz-card">
+          <div class="quiz-question-wrapper">
+            <p id="quizQuestion" class="quiz-question"></p>
+          </div>
+          <div id="quizOptions" class="quiz-options"></div>
+
+          <div class="quiz-footer">
+            <p id="quizProgress" class="quiz-progress"></p>
+            <p id="quizMessage" class="quiz-message"></p>
+            <button id="nextQuestion" class="btn-secondary quiz-next-btn" disabled>
+              Question suivante
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOÎTE À VŒUX / RÉPONSE -->
+      <div class="wish-section">
+        <h2>💬 Ton petit mot pour moi</h2>
+        <p>
+          Tu peux m’écrire un petit message ici, que je garderai comme un trésor. ✨
+        </p>
+        <textarea id="wishInput" rows="4" placeholder="Écris-moi quelque chose de mignon ici..."></textarea>
+        <button id="sendWish" class="btn-secondary">Envoyer</button>
+        <p id="wishDisplay" class="wish-display"></p>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
