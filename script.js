@@ -83,6 +83,15 @@ function startFloatingHearts() {
   heartInterval = setInterval(createFloatingHeart, 700);
 }
 
+// Lance la musique d'ambiance (appelé au clic sur le cœur)
+function startBackgroundMusic() {
+  if (!bgMusic) return;
+  bgMusic.play().then(() => {
+    musicPlaying = true;
+    if (musicToggle) musicToggle.textContent = "Mettre la musique en pause";
+  }).catch(() => {});
+}
+
 // Gestion du clic sur le cœur principal
 if (heartButton) {
   heartButton.addEventListener("click", () => {
@@ -91,6 +100,7 @@ if (heartButton) {
 
     startTyping();
     startFloatingHearts();
+    startBackgroundMusic();
 
     // Effet feu d'artifice (confetti)
     if (typeof confetti === "function") {
