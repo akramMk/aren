@@ -88,6 +88,32 @@ if (heartButton) {
 
     startTyping();
     startFloatingHearts();
+
+    // Effet feu d'artifice (confetti)
+    if (typeof confetti === "function") {
+      // Explosion centrale
+      confetti({
+        particleCount: 150,
+        spread: 120,
+        origin: { y: 0.6 }
+      });
+
+      // Feu d'artifice gauche
+      confetti({
+        particleCount: 100,
+        angle: 60,
+        spread: 100,
+        origin: { x: 0, y: 0.7 }
+      });
+
+      // Feu d'artifice droite
+      confetti({
+        particleCount: 100,
+        angle: 120,
+        spread: 100,
+        origin: { x: 1, y: 0.7 }
+      });
+    }
   });
 }
 
