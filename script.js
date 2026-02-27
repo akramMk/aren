@@ -255,6 +255,66 @@ if (startGameBtn) {
   startGameBtn.addEventListener("click", startGame);
 }
 
+// Deuxième jeu : Remplis le cœur d'amour
+const game2Fill = document.getElementById("game2Fill");
+const game2ClicksEl = document.getElementById("game2Clicks");
+const game2HeartBtn = document.getElementById("game2Heart");
+const game2Message = document.getElementById("game2Message");
+const game2Reset = document.getElementById("game2Reset");
+
+const GAME2_TARGET = 15;
+let game2Clicks = 0;
+
+function updateGame2() {
+  if (!game2ClicksEl || !game2Fill) return;
+  game2ClicksEl.textContent = String(game2Clicks);
+  const pct = Math.min(100, (game2Clicks / GAME2_TARGET) * 100);
+  game2Fill.style.width = pct + "%";
+
+  if (game2Clicks >= GAME2_TARGET) {
+    if (game2HeartBtn) {
+      game2HeartBtn.classList.add("done");
+      game2HeartBtn.textContent = "💖";
+    }
+    if (game2Message) {
+      game2Message.textContent = "Nhbeek, Je t'aime, Seni seviyorum, Ti amo ! 💞";
+    }
+    if (game2Reset) {
+      game2Reset.classList.remove("hidden");
+    }
+    if (typeof confetti === "function") {
+      confetti({
+        particleCount: 80,
+        spread: 100,
+        origin: { y: 0.75 },
+        colors: ["#ff9a9e", "#ff6a88", "#ffe0e8"]
+      });
+    }
+  }
+}
+
+if (game2HeartBtn) {
+  game2HeartBtn.addEventListener("click", () => {
+    if (game2Clicks >= GAME2_TARGET) return;
+    game2Clicks++;
+    updateGame2();
+  });
+}
+
+if (game2Reset) {
+  game2Reset.addEventListener("click", () => {
+    game2Clicks = 0;
+    if (game2Fill) game2Fill.style.width = "0%";
+    if (game2HeartBtn) {
+      game2HeartBtn.classList.remove("done");
+      game2HeartBtn.textContent = "❤️";
+    }
+    if (game2Message) game2Message.textContent = "";
+    game2Reset.classList.add("hidden");
+    updateGame2();
+  });
+}
+
 // Boîte à vœux
 if (sendWishBtn) {
   sendWishBtn.addEventListener("click", () => {
